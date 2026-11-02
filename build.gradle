@@ -56,6 +56,7 @@ gitPublish {
 	branch = 'gh-pages'
 	contents {
 		from "$buildDir/reports"
+        into './reports'
 		
 	}
 }
