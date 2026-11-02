@@ -15,8 +15,9 @@ java {
 }
 
 dependencies {
-    testImplementation 'org.junit.jupiter:junit-jupiter:5.7.0'
-    testImplementation 'org.hamcrest:hamcrest-library:2.2'
+    testImplementation 'org.junit.jupiter:junit-jupiter:5.13.0'
+    testRuntimeOnly 'org.junit.platform:junit-platform-launcher:1.13.0'
+    testImplementation 'org.hamcrest:hamcrest:3.0'
 }
 
 tasks.withType(Test) {
@@ -30,4 +31,38 @@ tasks.withType(Test) {
 application { //Allows  ./gradlew run --args=path-to-test-data
     mainClass = 'edu.odu.cs.MostCommonWords'
 }
+
+task copyFromHtml (type: Copy) {
+	from 'src/main/html'
+	into "$buildDir/reports" 
+}
+
+task copyFromDocs (type: Copy) {
+	dependsOn javadoc
+	from "$buildDir/docs"
+	into "$buildDir/reports"
+}
+
+task reports {
+	dependsOn build
+	dependsOn copyFromHtml
+	dependsOn copyFromDocs
+}
+
+gitPublishCopy.dependsOn reports
+
+gitPublish {
+	repoUri = 'git@github.com:ODU-CS350-F26/CS350--lab4-documentation--njohnston22.git'
+	branch = 'gh-pages'
+	contents {
+		from "$buildDir/reports"
+	}
+}
+
+task deployReports {
+	dependsOn gitPublishPush
+}
+
+
+	
 

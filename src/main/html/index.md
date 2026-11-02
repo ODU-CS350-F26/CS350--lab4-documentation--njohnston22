@@ -1,6 +1,7 @@
 # Project Reports
 
-Your Name
+Nadja Johnston
 
 * [Tests](./reports/tests/test/)
 * [JavaDoc](./reports/javadoc/)
+
