@@ -3,5 +3,5 @@
 Nadja Johnston
 
 * [Tests](./reports/tests/test/)
-* [JavaDoc](./reports/javadoc/)
+* [JavaDoc](./reports.javadoc/)
 
