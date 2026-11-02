@@ -52,10 +52,11 @@ task reports {
 gitPublishCopy.dependsOn reports
 
 gitPublish {
-	repoUri = 'git@github.com:ODU-CS350-F26/CS350--lab4-documentation--njohnston22.git'
+	repoUri = 'git@github.com:njohnston22/CS350--lab4-documentation--njohnston22.git'
 	branch = 'gh-pages'
 	contents {
 		from "$buildDir/reports"
+		
 	}
 }
 
